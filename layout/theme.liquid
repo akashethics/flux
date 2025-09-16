@@ -28,7 +28,14 @@
   <meta name="theme-color" content="{{ settings.color_primary }}">
 
   <!-- CSS ================================================== -->
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=A+Love+of+Thunder&display=swap" rel="stylesheet">
+  
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'cart-selector.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'collection-banner.scss.css' | asset_url | stylesheet_tag }}
 
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
@@ -415,6 +422,7 @@
     {{ 'handlebars.min.js' | asset_url | script_tag }}
     {% include 'ajax-cart-template' %}
     {{ 'ajax-cart.js' | asset_url | script_tag }}
+    {{ 'cart-selector.js' | asset_url | script_tag }}
     <script>
       jQuery(function($) {
         ajaxCart.init({

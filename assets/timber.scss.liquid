@@ -144,10 +144,10 @@ $zindexDrawer: 10;
 
 /*================ Typography ================*/
 
-$headerFontStack: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$headerFontStack: 'A Love of Thunder', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $headerFontWeight: 700;
 
-$bodyFontStack: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$bodyFontStack: 'A Love of Thunder', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $baseFontSize: 14px; // Henceforth known as 1em
 
 @font-face {
@@ -1659,45 +1659,378 @@ label.error {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/*================ Icon mapping ================*/
-.icon-amazon_payments:before { content: "\e800"; }
-.icon-american_express:before { content: "\41"; }
-.icon-arrow-down:before { content: "\e607"; }
-.icon-bitcoin:before { content: "\42"; }
-.icon-cart:before { content: "\e600"; }
-.icon-cirrus:before { content: "\43"; }
-.icon-dankort:before { content: "\64"; }
-.icon-diners_club:before { content: "\63"; }
-.icon-discover:before { content: "\44"; }
-.icon-dogecoin:before { content: "\e904"; }
-.icon-dwolla:before { content: "\e905"; }
-.icon-facebook:before { content: "\66"; }
-.icon-fancy:before { content: "\46"; }
-.icon-forbrugsforeningen:before { content: "\e906"; }
-.icon-google-plus:before { content: "\e900"; }
-.icon-grid-view:before { content: "\e603"; }
-.icon-hamburger:before { content: "\e601"; }
-.icon-instagram:before { content: "\e901"; }
-.icon-interac:before { content: "\49"; }
-.icon-jcb:before { content: "\4a"; }
-.icon-list-view:before { content: "\e604"; }
-.icon-litecoin:before { content: "\e908"; }
-.icon-maestro:before { content: "\6d"; }
-.icon-master:before { content: "\4d"; }
-.icon-minus:before { content: "\e602"; }
-.icon-paypal:before { content: "\50"; }
-.icon-pinterest:before { content: "\70"; }
-.icon-plus:before { content: "\e605"; }
-.icon-rss:before { content: "\72"; }
-.icon-search:before { content: "\73"; }
-.icon-stripe:before { content: "\53"; }
-.icon-tumblr:before { content: "\74"; }
-.icon-twitter:before { content: "\54"; }
-.icon-vimeo:before { content: "\76"; }
-.icon-visa:before { content: "\56"; }
-.icon-x:before { content: "\e606"; }
-.icon-youtube:before { content: "\79"; }
+/*================ Modern Icon Styling ================*/
+.icon {
+  position: relative;
+  transition: all 0.3s ease-out;
+  
+  &:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  }
+}
 
+/*================ Icon mapping with modern colors ================*/
+.icon-amazon_payments:before { 
+  content: "\e800"; 
+  background: linear-gradient(135deg, #FF9900, #FF6600);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-american_express:before { 
+  content: "\41"; 
+  background: linear-gradient(135deg, #006FCF, #0052A3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-arrow-down:before { 
+  content: "\e607"; 
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-bitcoin:before { 
+  content: "\42"; 
+  background: linear-gradient(135deg, #F7931A, #FF9500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-cart:before { 
+  content: "\e600"; 
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-cirrus:before { 
+  content: "\43"; 
+  background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-dankort:before { 
+  content: "\64"; 
+  background: linear-gradient(135deg, #059669, #10B981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-diners_club:before { 
+  content: "\63"; 
+  background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-discover:before { 
+  content: "\44"; 
+  background: linear-gradient(135deg, #FF6B35, #F7931E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-dogecoin:before { 
+  content: "\e904"; 
+  background: linear-gradient(135deg, #C2A633, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-dwolla:before { 
+  content: "\e905"; 
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-facebook:before { 
+  content: "\66"; 
+  background: linear-gradient(135deg, #1877F2, #42A5F5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-fancy:before { 
+  content: "\46"; 
+  background: linear-gradient(135deg, #FF6B9D, #FF8EAB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-forbrugsforeningen:before { 
+  content: "\e906"; 
+  background: linear-gradient(135deg, #8B5CF6, #A78BFA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-google-plus:before { 
+  content: "\e900"; 
+  background: linear-gradient(135deg, #DB4437, #EA4335);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-grid-view:before { 
+  content: "\e603"; 
+  background: linear-gradient(135deg, #6B7280, #9CA3AF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-hamburger:before { 
+  content: "\e601"; 
+  background: linear-gradient(135deg, #374151, #6B7280);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-instagram:before { 
+  content: "\e901"; 
+  background: linear-gradient(135deg, #E4405F, #F77737);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-interac:before { 
+  content: "\49"; 
+  background: linear-gradient(135deg, #059669, #10B981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-jcb:before { 
+  content: "\4a"; 
+  background: linear-gradient(135deg, #0B4F6C, #1E40AF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-list-view:before { 
+  content: "\e604"; 
+  background: linear-gradient(135deg, #6B7280, #9CA3AF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-litecoin:before { 
+  content: "\e908"; 
+  background: linear-gradient(135deg, #A3A3A3, #C0C0C0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-maestro:before { 
+  content: "\6d"; 
+  background: linear-gradient(135deg, #1E40AF, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-master:before { 
+  content: "\4d"; 
+  background: linear-gradient(135deg, #DC2626, #EF4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-minus:before { 
+  content: "\e602"; 
+  background: linear-gradient(135deg, #DC2626, #EF4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-paypal:before { 
+  content: "\50"; 
+  background: linear-gradient(135deg, #003087, #009CDE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-pinterest:before { 
+  content: "\70"; 
+  background: linear-gradient(135deg, #BD081C, #E60023);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-plus:before { 
+  content: "\e605"; 
+  background: linear-gradient(135deg, #059669, #10B981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-rss:before { 
+  content: "\72"; 
+  background: linear-gradient(135deg, #F59E0B, #FBBF24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-search:before { 
+  content: "\73"; 
+  background: linear-gradient(135deg, #6B7280, #9CA3AF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-stripe:before { 
+  content: "\53"; 
+  background: linear-gradient(135deg, #6772E5, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-tumblr:before { 
+  content: "\74"; 
+  background: linear-gradient(135deg, #36465D, #4A5568);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-twitter:before { 
+  content: "\54"; 
+  background: linear-gradient(135deg, #1DA1F2, #0EA5E9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-vimeo:before { 
+  content: "\76"; 
+  background: linear-gradient(135deg, #1AB7EA, #00B4D8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-visa:before { 
+  content: "\56"; 
+  background: linear-gradient(135deg, #1E40AF, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-x:before { 
+  content: "\e606"; 
+  background: linear-gradient(135deg, #DC2626, #EF4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon-youtube:before { 
+  content: "\79"; 
+  background: linear-gradient(135deg, #FF0000, #FF4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/*================ Enhanced Icon Effects ================*/
+.icon {
+  &.icon-cart,
+  &.icon-search,
+  &.icon-hamburger,
+  &.icon-plus,
+  &.icon-minus,
+  &.icon-x,
+  &.icon-arrow-down,
+  &.icon-grid-view,
+  &.icon-list-view {
+    &:before {
+      background: linear-gradient(135deg, #374151, #6B7280);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    &:hover:before {
+      background: linear-gradient(135deg, #1F2937, #374151);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+}
+
+/*================ Social Media Icons with Brand Colors ================*/
+.icon.icon-facebook:hover:before {
+  background: linear-gradient(135deg, #0F4C75, #1877F2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon.icon-twitter:hover:before {
+  background: linear-gradient(135deg, #0EA5E9, #1DA1F2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon.icon-instagram:hover:before {
+  background: linear-gradient(135deg, #F77737, #E4405F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon.icon-youtube:hover:before {
+  background: linear-gradient(135deg, #FF4444, #FF0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.icon.icon-pinterest:hover:before {
+  background: linear-gradient(135deg, #E60023, #BD081C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/*================ Payment Icons with Enhanced Styling ================*/
 .payment-icons {
   @include user-select(none);
   cursor: default;
@@ -1711,6 +2044,12 @@ label.error {
   .icon {
     font-size: 30px;
     line-height: 30px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.15);
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+    }
   }
 
   .fallback-text {
@@ -1718,831 +2057,74 @@ label.error {
   }
 }
 
-.social-icons li {
-  margin: 0 ($gutter / 2) ($gutter / 2);
-  vertical-align: middle;
-
-  @include at-query ($min, $postSmall) {
-    margin-left: 0;
-  }
-
-  .icon {
-    font-size: 30px;
-    line-height: 26px;
-  }
-
-  a {
-    color: {{ settings.color_footer_social_link }};
-
-    &:hover {
-      color: darken({{ settings.color_footer_social_link }}, 10%);
-    }
-  }
-}
-
-/*============================================================================
-  #Pagination
-==============================================================================*/
-.pagination {
-  margin-bottom: 1em;
-  text-align: center;
-
-  > span {
-    display: inline-block;
-    line-height: 1;
-  }
-
-  a {
-    display: block;
-  }
-
-  a,
-  .page.current {
-    padding: 8px;
-  }
-}
-
-/*============================================================================
-  #Site Header
-==============================================================================*/
-.site-header {
-  padding: ($gutter / 2) 0;
-
-  .grid--table {
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-
-    > .grid__item {
-      float: none;
-      display: table-cell;
-      vertical-align: middle;
-    }
-  }
-}
-
-.site-header__logo {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 100%;
-
-  @include at-query ($min, $large) {
-    text-align: left;
-  }
-
-  a,
-  a:hover,
-  a:focus {
-    text-decoration: none;
-  }
-
-  a, img {
-    display: block;
-  }
-
-  img {
-    margin: 0 auto;
-  }
-}
-
-.site-header__logo-link {
-  max-width: $logoMaxWidth;
-  margin: 0 auto;
-}
-
-.site-header__cart-toggle {
-  display: inline-block;
-}
-
-.site-header__search {
-  display: inline-block;
-  max-width: 400px;
-  margin-top: $gutter / 2;
-  width: 100%;
-}
-
-.search-bar {
-  max-width: 100%;
-
-  @include at-query ($max, $medium) {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-/*============================================================================
-  #Site Nav and Dropdowns
-==============================================================================*/
-.nav-bar {
-  background-color: $colorNav;
-}
-
-.site-nav {
-  font-size: em(16px);
-  cursor: default;
-  margin: 0 0 0 (-$gutter / 2);
-
-  li {
-    margin: 0;
-    display: block;
-  }
-
-  > li {
-    position: relative;
-    display: inline-block;
-  }
-}
-
-/*================ Home to hamburger and cart that toggle drawers ================*/
-.site-nav--mobile {
-  @extend .site-nav;
-
-  .text-right & {
-    margin: 0 (-$gutter / 2) 0 0;
-  }
-}
-
-.site-nav__link {
-  display: block;
-  text-decoration: none;
-  padding: $gutter / 2;
-  white-space: nowrap;
-  color: $colorNavText;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: darken($colorNavText, 15%);
-  }
-
-  .icon-arrow-down {
-    position: relative;
-    top: -2px;
-    font-size: 10px;
-    padding-left: $gutter / 4;
-  }
-
-  .site-nav--active > & {
-    font-weight: bold;
-  }
-
-  .site-nav--mobile & {
-    display: inline-block;
-  }
-}
-
-/*================ Dropdowns ================*/
-.site-nav__dropdown {
-  display: none;
-  position: absolute;
-  left: 0;
-  margin: 0;
-  z-index: $zindexNavDropdowns;
-
-  .supports-no-touch .site-nav--has-dropdown:hover &,
-  .site-nav--has-dropdown.nav-hover &,
-  .nav-focus + & {
-    display: block;
-  }
-
-  a {
-    background-color: $colorNav;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: darken($colorNav, 10%);
-    }
-  }
-}
-
-/*================ Search bar in header ================*/
-.nav-search {
-  position: relative;
-  padding: 10px 0;
-
-  @include at-query ($max, $medium) {
-    padding: 0 0 ($gutter / 2);
-    margin: 0 auto;
-    text-align: center;
-  }
-}
-
-/*============================================================================
-  #Mobile Nav
-  - List of items inside the mobile drawer
-==============================================================================*/
-.mobile-nav {
-  // Negative of .drawer left/right padding for full-width link tap area
-  margin: (-$gutter / 2) (-$gutter / 2) 0 (-$gutter / 2);
-
-  li {
-    margin-bottom: 0;
-  }
-}
-
-.mobile-nav__search {
-  padding: $gutter / 2;
-
-  .search-bar {
-    margin-bottom: 0;
-  }
-}
-
-.mobile-nav__item {
-  position: relative;
-  display: block;
-
-  // Background color on top level items so there is no
-  // element overlap on subnav's CSS toggle animation
-  .mobile-nav > & {
-    background-color: $colorDrawers;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: $gutter / 2;
-    right: $gutter / 2;
-    border-bottom: 1px solid $colorDrawerBorder;
-  }
-
-  .mobile-nav > &:last-child:after {
-    display: none;
-  }
-}
-
-// Login/logout links can't have a class on them, so style <a> element
-.mobile-nav__item a {
-  display: block;
-}
-
-.mobile-nav__item a,
-.mobile-nav__toggle button {
-  color: $colorDrawerText;
-  padding: $gutter / 2;
-  text-decoration: none;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: darken($colorDrawerText, 15%);
-  }
-
-  &:active,
-  &:focus {
-    background-color: darken($colorDrawers, 5%);
-  }
-}
-
-.mobile-nav__item--active {
-  font-weight: bold;
-}
-
-.mobile-nav__has-sublist {
-  display: table;
-  width: 100%;
-
-  .mobile-nav__link {
-    display: table-cell;
-    vertical-align: middle;
-    width: 100%;
-  }
-}
-
-.mobile-nav__toggle {
-  display: table-cell;
-  vertical-align: middle;
-  width: 1%;
-}
-
-.mobile-nav__toggle-open {
-  .mobile-nav--expanded & {
-    display: none;
-  }
-}
-
-.mobile-nav__toggle-close {
-  display: none;
-
-  .mobile-nav--expanded & {
-    display: block;
-  }
-}
-
-.mobile-nav__sublist {
-  margin: 0;
-  max-height: 0;
-  visibility: hidden;
-  overflow: hidden;
-  transition: all 300ms cubic-bezier(0.57, 0.06, 0.05, 0.95);
-  @include backface();
-
-  .mobile-nav--expanded + & {
-    visibility: visible;
-    max-height: 700px;
-    transition: all 700ms cubic-bezier(0.57, 0.06, 0.05, 0.95);
-  }
-
-  .mobile-nav__item:after {
-    top: 0;
-    bottom: auto;
-  }
-
-  .mobile-nav__link {
-    padding-left: $gutter;
-    font-weight: normal;
-  }
-}
-
-/*============================================================================
-  #Drawers
-==============================================================================*/
-.js-drawer-open {
-  overflow: hidden;
-}
-
-.drawer {
-  @include promote-layer();
-  display: none;
-  position: fixed;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  top: 0;
-  bottom: 0;
-  padding: 0 ($gutter / 2) ($gutter / 2);
-  max-width: 95%;
-  z-index: $zindexDrawer;
-  color: $colorDrawerText;
-  background-color: $colorDrawers;
-  transition: $drawerTransition;
-
-  a {
-    color: $colorDrawerText;
-
-    &:hover,
-    &:focus {
-      opacity: 0.7;
-    }
-  }
-
-  input,
-  textarea {
-    border-color: $colorDrawerBorder;
-  }
-}
-
-.drawer--left {
-  width: $drawerNavWidth;
-  left: -$drawerNavWidth;
-  border-right: 1px solid $colorDrawerBorder;
-
-  .js-drawer-open-left & {
-    display: block;
-    @include transform(translateX($drawerNavWidth));
-
-    .lt-ie9 & {
-      left: 0;
-    }
-  }
-}
-
-.drawer--right {
-  width: $drawerCartWidth;
-  right: -$drawerCartWidth;
-  border-left: 1px solid $colorDrawerBorder;
-
-  .js-drawer-open-right & {
-    display: block;
-    @include transform(translateX(-$drawerCartWidth));
-
-    .lt-ie9 & {
-      right: 0;
-    }
-  }
-}
-
-#PageContainer {
-  overflow: hidden;
-}
-
-.is-moved-by-drawer {
-  @include promote-layer();
-  transition: $drawerTransition;
-
-  .js-drawer-open-left & {
-    @include transform(translateX($drawerNavWidth));
-  }
-
-  .js-drawer-open-right & {
-    @include transform(translateX(-$drawerCartWidth));
-  }
-}
-
-.drawer__header {
-  display: table;
-  height: 70px;
-  width: 100%;
-  margin-bottom: $gutter / 2;
-  border-bottom: 1px solid $colorDrawerBorder;
-}
-
-.drawer__title,
-.drawer__close {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.drawer__title {
-  width: 100%;
-}
-
-.drawer__close {
-  width: 1%;
-  text-align: center;
-  font-size: em(18px);
-}
-
-.drawer__close button {
-  position: relative;
-  right: -20px;
-  height: 100%;
-  padding: 0 20px;
-  color: inherit;
-
-  &:active,
-  &:focus {
-    background-color: darken($colorDrawers, 5%);
-  }
-}
-
-/*============================================================================
-  #Site Footer
-==============================================================================*/
-.site-footer {
-  background-color: $colorFooterBg;
-  padding: $gutter 0;
-  color: $colorFooterText;
-
-  @include at-query ($min, $large) {
-    padding: ($gutter * 2) 0;
-  }
-}
-
-/*============================================================================
-  #Product and Collection Grids
-==============================================================================*/
-.grid__image {
-  display: block;
-  margin: 0 auto ($gutter / 2);
-
-  img {
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-/*============================================================================
-  #Collection Filters
-==============================================================================*/
-.filter--active {
-  font-weight: bold;
-}
-
-/*============================================================================
-  #Breadcrumbs
-==============================================================================*/
-.breadcrumb {
-  margin-bottom: $gutter;
-
-  a,
-  span {
-    display: inline-block;
-    padding: 0 7px 0 0;
-    margin-right: 7px;
-
-    &:first-child {
-      padding-left: 0;
-    }
-  }
-}
-
-
-/*============================================================================
-  #Product Page
-==============================================================================*/
-.product-single__variants {
-  display: none;
-
-  .no-js & {
-    display: block;
-  }
-}
-
-.product-single__photos {
-  margin-bottom: $gutter;
-}
-
-.product-single__photos,
-.product-single__thumbnails {
-  a, img {
-    display: block;
-    margin: 0 auto;
-  }
-
-  li {
-    margin-bottom: $gutter;
-  }
-}
-
-
-/*============================================================================
-  #Notes and Form Feedback
-==============================================================================*/
-.note,
-.errors {
-  border-radius: $radius;
-  padding: 6px 12px;
-  margin-bottom: $gutter / 2;
-  border: 1px solid transparent;
-  font-size: 0.9em;
-  text-align: left;
-
-  ul,
-  ol {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  li:last-child {
-    margin-bottom: 0;
-  }
-
-  p {
-    margin-bottom: 0;
-  }
-}
-
-.note {
-  border-color: $colorBorder;
-}
-
-.errors {
-  ul {
-    list-style: disc outside;
-    margin-left: 20px;
-  }
-}
-
-.form-success {
-  color: $successGreen;
-  background-color: $successGreenBg;
-  border-color: $successGreen;
-
-  a {
-    color: $successGreen;
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
-
-.form-error,
-.errors {
-  color: $errorRed;
-  background-color: $errorRedBg;
-  border-color: $errorRed;
-
-  a {
-    color: $errorRed;
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
-
-
-/*============================================================================
-  #Cart Page
-==============================================================================*/
-.cart__row {
-  position: relative;
-  margin-top: $gutter;
-  padding-top: $gutter;
-  border-top: 1px solid $colorBorder;
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:first-child {
-    padding-top: 0;
-  }
-
-  .js-qty {
-    margin: 0 auto;
-  }
-}
-
-.cart-table {
-  th {
-    font-weight: normal;
-  }
-
-  td,
-  th {
-    padding: 30px 15px;
-    border: none;
-  }
-}
-
-@include at-query ($min, $large) {
-  .cart__row--table-large {
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-
-    .grid__item {
-      display: table-cell;
-      vertical-align: middle;
-      float: none;
-    }
-  }
-}
-
-.cart__image {
-  display: block;
-
-  img {
-    display: block;
-    max-width: 100%;
-  }
-}
-
-.cart__subtotal {
-  margin: 0 0 0 ($gutter / 3);
-  display: inline;
-}
-
-.cart__mini-labels {
-  display: block;
-  margin: ($gutter / 3) 0;
-  font-size: em(12px);
-
-  @include at-query ($min, $large) {
-    display: none;
-  }
-}
-
-.cart__remove {
-  display: block;
-}
-
-/*============================================================================
-  #Ajax Cart Styles (conditionally loaded)
-==============================================================================*/
-{% if settings.ajax_cart_method == "drawer" %}
-
-.ajaxcart__inner {
-  margin-bottom: $gutter;
-}
-
-.ajaxcart__row {
-  > .grid {
-    margin-left: -$gutter / 2;
-
-    > .grid__item {
-      padding-left: $gutter / 2;
-    }
-  }
-}
-
-.ajaxcart__product {
-  position: relative;
-  max-height: 500px;
-
-  &.is-removed {
-    max-height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    transition: all 450ms cubic-bezier(0.57,.06,.05,.95);
-    @include backface();
-  }
-}
-
-.ajaxcart__row {
-  padding-bottom: $gutter / 2;
-  margin-bottom: $gutter / 2;
-  border-bottom: 1px solid $colorDrawerBorder;
+/*================ Icon Size Variations ================*/
+.icon.icon--small {
+  font-size: 16px;
 }
-
-.ajaxcart__product-image {
-  display: block;
-  overflow: hidden;
-  margin-bottom: 15px;
 
-  img {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-  }
+.icon.icon--medium {
+  font-size: 24px;
 }
 
-.ajaxcart__product-name,
-.ajaxcart__product-meta {
-  display: block;
+.icon.icon--large {
+  font-size: 32px;
 }
 
-.ajaxcart__product-name + .ajaxcart__product-meta {
-  padding-top: $gutter / 5;
+.icon.icon--xlarge {
+  font-size: 48px;
 }
-
-/*================ Quantity Selectors ================*/
-.js-qty {
-  position: relative;
-  margin-bottom: 1em;
-  max-width: 100px;
-  min-width: 75px;
-  overflow: visible;
 
-  input {
-    display: block;
-    background: none;
-    text-align: center;
-    width: 100%;
-    padding: 5px 25px;
-    margin: 0;
+/*================ Icon with Background Options ================*/
+.icon.icon--with-bg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+    transform: scale(1.05);
   }
-}
-
-.js-qty__adjust {
-  cursor: pointer;
-  position: absolute;
-  display: block;
-  top: 0;
-  bottom: 0;
-  border: 0 none;
-  padding: 0 8px;
-  background: none;
-  text-align: center;
-  overflow: hidden;
-  @include user-select(none);
-
-  &:hover,
-  &:focus {
-    color: $colorPrimary;
+  
+  &:before {
+    background: linear-gradient(135deg, #374151, #6B7280);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-}
-
-.js-qty__adjust--plus {
-  right: 0;
-  border-left: 1px solid $colorBorder;
-}
-
-.js-qty__adjust--minus {
-  left: 0;
-  border-right: 1px solid $colorBorder;
 }
 
-/*================ Quantity Selectors in Ajax Cart ================*/
-.ajaxcart__qty {
-  @extend .js-qty;
-  margin: 0;
-
-  .is-loading & {
-    opacity: 0.5;
-    transition: none;
-  }
+/*================ Icon Animation Classes ================*/
+.icon.icon--pulse {
+  animation: iconPulse 2s infinite;
 }
 
-.ajaxcart__qty-num {
-  border-color: $colorDrawerBorder;
-  color: $colorDrawerText;
+.icon.icon--bounce {
+  animation: iconBounce 1s infinite;
 }
 
-.ajaxcart__qty-adjust {
-  @extend .js-qty__adjust;
-  color: $colorDrawerText;
+.icon.icon--rotate {
+  animation: iconRotate 3s linear infinite;
 }
 
-.ajaxcart__qty--plus {
-  @extend .js-qty__adjust--plus;
-  border-color: $colorDrawerBorder;
+@keyframes iconPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
-.ajaxcart__qty--minus {
-  @extend .js-qty__adjust--minus;
-  border-color: $colorDrawerBorder;
+@keyframes iconBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
 }
 
-.ajaxcart-item__price-strikethrough {
-  float: right;
+@keyframes iconRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-{% endif %} // settings.ajax_cart_method

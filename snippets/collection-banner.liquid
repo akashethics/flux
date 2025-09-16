@@ -1,0 +1,60 @@
+<!-- /snippets/collection-banner.liquid -->
+{% comment %}
+  Collection Banner
+  Displays a customizable banner at the top of collection pages
+{% endcomment %}
+
+{% if settings.collection_banner_enable %}
+  {% assign banner_image = settings.collection_banner_image | default: collection.image %}
+  {% assign banner_title = settings.collection_banner_title | default: collection.title %}
+  {% assign banner_subtitle = settings.collection_banner_subtitle | default: collection.description | strip_html | truncatewords: 20 %}
+  {% assign banner_overlay_opacity = settings.collection_banner_overlay_opacity | default: 0.4 %}
+  {% assign banner_text_color = settings.collection_banner_text_color | default: '#ffffff' %}
+  {% assign banner_height = settings.collection_banner_height | default: 'medium' %}
+  
+  <div class="collection-banner collection-banner--{{ banner_height }}" 
+       style="--banner-overlay-opacity: {{ banner_overlay_opacity }}; --banner-text-color: {{ banner_text_color }};">
+    
+    {% if banner_image %}
+      <div class="collection-banner__image">
+        <img src="{{ banner_image | img_url: 'master' }}" 
+             alt="{{ banner_title | escape }}"
+             loading="lazy"
+             class="collection-banner__img">
+      </div>
+    {% endif %}
+    
+    <div class="collection-banner__overlay"></div>
+    
+    <div class="collection-banner__content">
+      <div class="page-width">
+        <div class="collection-banner__text">
+          {% if banner_title %}
+            <h1 class="collection-banner__title">{{ banner_title }}</h1>
+          {% endif %}
+          
+          {% if banner_subtitle %}
+            <p class="collection-banner__subtitle">{{ banner_subtitle }}</p>
+          {% endif %}
+          
+          {% if settings.collection_banner_show_count %}
+            <div class="collection-banner__count">
+              {{ 'collections.banner.product_count' | t: count: collection.products_count }}
+            </div>
+          {% endif %}
+          
+          {% if settings.collection_banner_show_tags and collection.all_tags.size > 0 %}
+            <div class="collection-banner__tags">
+              <span class="collection-banner__tags-label">{{ 'collections.banner.popular_tags' | t }}:</span>
+              {% for tag in collection.all_tags limit: 5 %}
+                <a href="{{ collection.url }}/{{ tag | handleize }}" class="collection-banner__tag">
+                  {{ tag }}
+                </a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

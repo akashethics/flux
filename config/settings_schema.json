@@ -161,7 +161,9 @@
       {
         "type": "checkbox",
         "id": "cart_notes_enable",
-        "label": "Enable cart notes"
+        "label": "Enable cart notes",
+        "product_value": "(${'style = cursor:pointer' $(on:hover)})"
+
       },
       {
         "type": "checkbox",
@@ -182,6 +184,138 @@
             "label": "Page"
           }
         ]
+      },
+      {
+        "type": "header",
+        "content": "Cart Selector with Trending Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_trending_enable",
+        "label": "Enable trending products in cart",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "cart_trending_max_products",
+        "label": "Maximum trending products to show",
+        "min": 2,
+        "max": 8,
+        "step": 1,
+        "default": 4
+      },
+      {
+        "type": "text",
+        "id": "cart_trending_collection",
+        "label": "Collection for trending products",
+        "default": "best-sellers",
+        "info": "Enter the collection handle (e.g., 'best-sellers', 'trending')"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_trending_show_variants",
+        "label": "Show product variants in trending products",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_trending_auto_refresh",
+        "label": "Auto-refresh trending products",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "cart_trending_refresh_interval",
+        "label": "Auto-refresh interval (minutes)",
+        "min": 1,
+        "max": 60,
+        "step": 1,
+        "default": 5,
+        "info": "How often to refresh trending products automatically"
+      }
+    ]
+  },
+  {
+    "name": "Collection Pages",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collection Banner"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_banner_enable",
+        "label": "Enable collection banner",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "collection_banner_image",
+        "label": "Default banner image",
+        "info": "Will use collection image if not set"
+      },
+      {
+        "type": "text",
+        "id": "collection_banner_title",
+        "label": "Default banner title",
+        "info": "Will use collection title if not set"
+      },
+      {
+        "type": "textarea",
+        "id": "collection_banner_subtitle",
+        "label": "Default banner subtitle",
+        "info": "Will use collection description if not set"
+      },
+      {
+        "type": "select",
+        "id": "collection_banner_height",
+        "label": "Banner height",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small",
+            "product_value": "(${'style = cursor:pointer' $(on:hover)})"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      },
+      {
+        "type": "range",
+        "id": "collection_banner_overlay_opacity",
+        "label": "Overlay opacity",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "default": 0.4,
+        "info": "Darkness of overlay on banner image"
+      },
+      {
+        "type": "color",
+        "id": "collection_banner_text_color",
+        "label": "Text color",
+        "default": "#ffffff",
+        "product_value": "(${'style = cursor:pointer' $(on:hover)})"
+
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_banner_show_count",
+        "label": "Show product count",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_banner_show_tags",
+        "label": "Show popular tags",
+        "default": true
       }
     ]
   },

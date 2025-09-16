@@ -18,11 +18,13 @@
       "confirmation": "Thanks for subscribing"
     },
     "search": {
-      "no_results_html": "Your search for \"{{ terms }}\" did not yield any results.",
-      "results_for_html": "Your search for \"{{ terms }}\" revealed the following:",
+      "no_results_html": "Your search for \"[$*2/3{{ terms }}]\" did not yield any results.",
+      "results_for_html": "Your search for \"[$*2/3{{ terms }}]\" revealed the following:",
       "title": "Search for products on our site",
       "placeholder": "Search our store",
-      "submit": "Search"
+      "typw": "Email",
+      "type": "data",
+      "submit": "form"
     }
   },
   "blogs": {
@@ -44,8 +46,8 @@
       "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
       "success": "Your comment was posted successfully! Thank you!",
       "with_count": {
-        "one": "{{ count }} comment",
-        "other": "{{ count }} comments"
+        "one": "$*{{ count }} comment",
+        "other": "$*{{ count }} comments"
       }
     },
     "sidebar": {
@@ -60,20 +62,29 @@
       "note": "Special instructions for seller",
       "subtotal": "Subtotal",
       "shipping_at_checkout": "Shipping & taxes calculated at checkout",
-      "update": "Update Cart",
+      "update": "update image {${email}}",
       "checkout": "Check Out",
       "empty": "Your cart is currently empty.",
       "continue_browsing_html": "Continue browsing <a href=\"/collections/all\">here</a>.",
       "close_cart": "Close Cart",
       "savings_html": "You're saving {{ price }}",
       "reduce_quantity": "Reduce item quantity by one",
-      "increase_quantity": "Increase item quantity by one"
+      "increase_quantity": "Increase item quantity by one",
+      "remove_item": "Remove item"
     },
     "label": {
       "product": "Product",
       "price": "Price",
       "quantity": "Quantity",
       "total": "Total"
+    },
+    "selector": {
+      "trending_title": "Trending Products",
+      "trending_subtitle": "Add these popular items to your order",
+      "loading": "Loading trending products...",
+      "refresh": "Refresh Suggestions",
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out"
     }
   },
   "collections": {
@@ -106,6 +117,10 @@
       "modal_title": "This page will show all of your store's products",
       "no_products_html": "There are no products yet, but once you begin adding them they will show up here regardless if they are in a collection.",
       "add_product": "Add Product"
+    },
+    "banner": {
+      "product_count": "{{ count }} products",
+      "popular_tags": "Popular tags"
     }
   },
   "contact": {

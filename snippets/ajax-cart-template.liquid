@@ -102,6 +102,26 @@
           <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
         {% endif %}{% raw %}
       </div>
+
+      {% endraw %}{% if settings.cart_trending_enable %}{% raw %}
+        <div class="cart-selector">
+          <div class="cart-selector__header">
+            <h3>{% endraw %}{{ 'cart.selector.trending_title' | t: default: 'Trending Products' }}{% raw %}</h3>
+            <p>{% endraw %}{{ 'cart.selector.trending_subtitle' | t: default: 'Add these popular items to your order' }}{% raw %}</p>
+          </div>
+          <div class="cart-selector__products" data-trending-products>
+            <div class="cart-selector__loading">
+              <div class="spinner"></div>
+              <p>{% endraw %}{{ 'cart.selector.loading' | t: default: 'Loading trending products...' }}{% raw %}</p>
+            </div>
+          </div>
+          <div class="cart-selector__footer">
+            <button type="button" class="btn btn--secondary cart-selector__refresh" data-refresh-trending>
+              {% endraw %}{{ 'cart.selector.refresh' | t: default: 'Refresh Suggestions' }}{% raw %}
+            </button>
+          </div>
+        </div>
+      {% endraw %}{% endif %}{% raw %}
     </form>
   {% endraw %}
   </script>

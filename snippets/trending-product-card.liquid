@@ -1,0 +1,66 @@
+<!-- /snippets/trending-product-card.liquid -->
+{% comment %}
+  Trending Product Card for Cart Selector
+  Displays a product with quick add to cart functionality
+{% endcomment %}
+
+<div class="trending-product-card" data-product-id="{{ product.id }}" data-variant-id="{{ product.selected_or_first_available_variant.id }}">
+  <div class="trending-product-card__image">
+    <a href="{{ product.url }}" class="trending-product-card__link">
+      <img src="{{ product.featured_image | img_url: 'medium' }}" 
+           alt="{{ product.title | escape }}"
+           loading="lazy"
+           class="trending-product-card__img">
+    </a>
+  </div>
+
+  <div class="trending-product-card__content">
+    <h4 class="trending-product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h4>
+    
+    {% if product.available %}
+      <div class="trending-product-card__price">
+        {% if product.compare_at_price > product.price %}
+          <span class="trending-product-card__price--sale">{{ product.price | money }}</span>
+          <span class="trending-product-card__price--compare"><s>{{ product.compare_at_price | money }}</s></span>
+        {% else %}
+          <span class="trending-product-card__price--regular">{{ product.price | money }}</span>
+        {% endif %}
+      </div>
+
+      {% if settings.cart_trending_show_variants and product.variants.size > 1 %}
+        <div class="trending-product-card__variants">
+          <select class="trending-product-card__variant-select" data-variant-select>
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}" 
+                      {% if variant.available %}data-available="true"{% else %}data-available="false"{% endif %}
+                      {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+                {{ variant.title }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endif %}
+
+      <div class="trending-product-card__actions">
+        <button type="button" 
+                class="btn btn--small trending-product-card__add-to-cart" 
+                data-add-to-cart
+                data-product-id="{{ product.id }}"
+                data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}
+            {{ 'cart.selector.add_to_cart' | t: default: 'Add to Cart' }}
+          {% else %}
+            {{ 'cart.selector.sold_out' | t: default: 'Sold Out' }}
+          {% endif %}
+        </button>
+      </div>
+    {% else %}
+      <div class="trending-product-card__unavailable">
+        <span class="trending-product-card__sold-out">{{ 'cart.selector.sold_out' | t: default: 'Sold Out' }}</span>
+      </div>
+    {% endif %}
+  </div>
+</div>

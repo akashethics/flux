@@ -1,0 +1,275 @@
+/*============================================================================
+  Cart Selector with Trending Products
+  Automates product display and shows trending products before checkout
+==============================================================================*/
+
+window.CartSelector = window.CartSelector || {};
+
+(function($) {
+  'use strict';
+
+  var CartSelector = {
+    init: function() {
+      this.cache = {};
+      this.bindEvents();
+      this.loadTrendingProducts();
+      this.startAutoRefresh();
+    },
+
+    cache: {},
+
+    cacheSelectors: function() {
+      this.cache = {
+        $cartSelector: $('[data-cart-selector]'),
+        $trendingProducts: $('[data-trending-products]'),
+        $refreshButton: $('[data-refresh-trending]'),
+        $config: $('[data-trending-config]')
+      };
+    },
+
+    bindEvents: function() {
+      var self = this;
+      
+      // Refresh trending products
+      $(document).on('click', '[data-refresh-trending]', function(e) {
+        e.preventDefault();
+        self.loadTrendingProducts();
+      });
+
+      // Add to cart from trending products
+      $(document).on('click', '[data-add-to-cart]', function(e) {
+        e.preventDefault();
+        var $btn = $(this);
+        var productId = $btn.data('product-id');
+        var variantId = $btn.data('variant-id');
+        var quantity = 1;
+
+        self.addToCart(variantId, quantity, $btn);
+      });
+
+      // Handle variant selection
+      $(document).on('change', '[data-variant-select]', function(e) {
+        var $select = $(this);
+        var $card = $select.closest('.trending-product-card');
+        var variantId = $select.val();
+        var $addBtn = $card.find('[data-add-to-cart]');
+        
+        $addBtn.data('variant-id', variantId);
+        
+        // Update button state based on availability
+        var $selectedOption = $select.find('option:selected');
+        if ($selectedOption.data('available') === false) {
+          $addBtn.prop('disabled', true).text('Sold Out');
+        } else {
+          $addBtn.prop('disabled', false).text('Add to Cart');
+        }
+      });
+
+      // Cart update events
+      $(document.body).on('afterAddItem.ajaxCart', function(event, lineItem, form) {
+        self.updateTrendingProducts();
+      });
+    },
+
+    getConfig: function() {
+      if (this.cache.$config.length) {
+        return JSON.parse(this.cache.$config.html());
+      }
+      return {
+        max_products: 4,
+        collection_handle: 'best-sellers',
+        show_variants: false,
+        auto_refresh: true,
+        refresh_interval: 300000
+      };
+    },
+
+    loadTrendingProducts: function() {
+      var self = this;
+      var config = this.getConfig();
+      
+      if (!this.cache.$trendingProducts.length) {
+        this.cacheSelectors();
+      }
+
+      this.cache.$trendingProducts.html('<div class="cart-selector__loading"><div class="spinner"></div><p>Loading trending products...</p></div>');
+
+      // Get trending products from collection
+      $.ajax({
+        url: '/collections/' + config.collection_handle + '/products.json',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          self.renderTrendingProducts(data.products.slice(0, config.max_products));
+        },
+        error: function() {
+          self.cache.$trendingProducts.html('<p class="cart-selector__error">Unable to load trending products</p>');
+        }
+      });
+    },
+
+    renderTrendingProducts: function(products) {
+      var self = this;
+      var html = '';
+      
+      if (products.length === 0) {
+        html = '<p class="cart-selector__empty">No trending products available</p>';
+      } else {
+        html = '<div class="trending-products-grid">';
+        products.forEach(function(product) {
+          html += self.renderProductCard(product);
+        });
+        html += '</div>';
+      }
+      
+      this.cache.$trendingProducts.html(html);
+    },
+
+    renderProductCard: function(product) {
+      var config = this.getConfig();
+      var variant = product.variants[0];
+      var available = variant && variant.available;
+      
+      var html = '<div class="trending-product-card" data-product-id="' + product.id + '" data-variant-id="' + variant.id + '">';
+      
+      // Image
+      html += '<div class="trending-product-card__image">';
+      html += '<a href="/products/' + product.handle + '" class="trending-product-card__link">';
+      html += '<img src="' + (product.featured_image || product.images[0]) + '" alt="' + product.title + '" class="trending-product-card__img">';
+      html += '</a></div>';
+      
+      // Content
+      html += '<div class="trending-product-card__content">';
+      html += '<h4 class="trending-product-card__title"><a href="/products/' + product.handle + '">' + product.title + '</a></h4>';
+      
+      if (available) {
+        // Price
+        html += '<div class="trending-product-card__price">';
+        if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+          html += '<span class="trending-product-card__price--sale">' + this.formatMoney(variant.price) + '</span>';
+          html += '<span class="trending-product-card__price--compare"><s>' + this.formatMoney(variant.compare_at_price) + '</s></span>';
+        } else {
+          html += '<span class="trending-product-card__price--regular">' + this.formatMoney(variant.price) + '</span>';
+        }
+        html += '</div>';
+        
+        // Variants
+        if (config.show_variants && product.variants.length > 1) {
+          html += '<div class="trending-product-card__variants">';
+          html += '<select class="trending-product-card__variant-select" data-variant-select>';
+          product.variants.forEach(function(v) {
+            html += '<option value="' + v.id + '" data-available="' + v.available + '"' + (v.id === variant.id ? ' selected' : '') + '>';
+            html += v.title;
+            html += '</option>';
+          });
+          html += '</select></div>';
+        }
+        
+        // Add to cart button
+        html += '<div class="trending-product-card__actions">';
+        html += '<button type="button" class="btn btn--small trending-product-card__add-to-cart" data-add-to-cart data-product-id="' + product.id + '" data-variant-id="' + variant.id + '">Add to Cart</button>';
+        html += '</div>';
+      } else {
+        html += '<div class="trending-product-card__unavailable">';
+        html += '<span class="trending-product-card__sold-out">Sold Out</span>';
+        html += '</div>';
+      }
+      
+      html += '</div></div>';
+      
+      return html;
+    },
+
+    addToCart: function(variantId, quantity, $button) {
+      var self = this;
+      var originalText = $button.text();
+      
+      $button.prop('disabled', true).text('Adding...');
+      
+      $.ajax({
+        url: '/cart/add.js',
+        method: 'POST',
+        dataType: 'json',
+        data: {
+          id: variantId,
+          quantity: quantity
+        },
+        success: function(data) {
+          $button.text('Added!').addClass('added');
+          
+          // Trigger cart update
+          $(document.body).trigger('afterAddItem.ajaxCart', [data]);
+          
+          // Reset button after delay
+          setTimeout(function() {
+            $button.prop('disabled', false).text(originalText).removeClass('added');
+          }, 2000);
+        },
+        error: function(xhr) {
+          var error = 'Error adding to cart';
+          try {
+            var response = JSON.parse(xhr.responseText);
+            error = response.description || error;
+          } catch(e) {}
+          
+          $button.text(error).addClass('error');
+          
+          setTimeout(function() {
+            $button.prop('disabled', false).text(originalText).removeClass('error');
+          }, 3000);
+        }
+      });
+    },
+
+    updateTrendingProducts: function() {
+      // Remove products that are already in cart
+      var self = this;
+      var cartItems = window.ShopifyAPI && window.ShopifyAPI.cart ? window.ShopifyAPI.cart.items : [];
+      
+      if (cartItems.length > 0) {
+        this.cache.$trendingProducts.find('.trending-product-card').each(function() {
+          var $card = $(this);
+          var productId = $card.data('product-id');
+          
+          var inCart = cartItems.some(function(item) {
+            return item.product_id === productId;
+          });
+          
+          if (inCart) {
+            $card.addClass('in-cart');
+            $card.find('[data-add-to-cart]').prop('disabled', true).text('In Cart');
+          }
+        });
+      }
+    },
+
+    startAutoRefresh: function() {
+      var config = this.getConfig();
+      var self = this;
+      
+      if (config.auto_refresh && config.refresh_interval > 0) {
+        // Convert minutes to milliseconds
+        var intervalMs = config.refresh_interval * 60 * 1000;
+        setInterval(function() {
+          self.loadTrendingProducts();
+        }, intervalMs);
+      }
+    },
+
+    formatMoney: function(cents) {
+      if (window.Shopify && window.Shopify.formatMoney) {
+        return window.Shopify.formatMoney(cents);
+      }
+      return '$' + (cents / 100).toFixed(2);
+    }
+  };
+
+  // Initialize when DOM is ready
+  $(document).ready(function() {
+    CartSelector.init();
+  });
+
+  // Export for global access
+  window.CartSelector = CartSelector;
+
+})(jQuery);

@@ -1,0 +1,43 @@
+<!-- /snippets/cart-selector.liquid -->
+{% comment %}
+  Cart Selector with Trending Products
+  Shows trending products before checkout to encourage additional purchases
+{% endcomment %}
+
+{% if cart.item_count > 0 %}
+  <div class="cart-selector" data-cart-selector>
+    <div class="cart-selector__header">
+      <h3>{{ 'cart.selector.trending_title' | t: default: 'Trending Products' }}</h3>
+      <p>{{ 'cart.selector.trending_subtitle' | t: default: 'Add these popular items to your order' }}</p>
+    </div>
+
+    <div class="cart-selector__products" data-trending-products>
+      {% comment %}
+        Get trending products based on best sellers or recently viewed
+        This will be populated via JavaScript for dynamic content
+      {% endcomment %}
+      <div class="cart-selector__loading" | ${'loading.spinner'}>
+        <div class="spinner"></div>
+        <p>{{ 'cart.selector.loading' | t: default: 'Loading trending products...' }}</p>
+      </div>
+    </div>
+
+    <div class="cart-selector__footer">
+      <button type="button" class="btn btn--dark cart-selector__refresh" data-refresh-trending>
+        {{ 'cart.selector.refresh' | t: default: 'Refresh Suggestions' | 'auto-reffresh 10 sec'}}
+      </button>
+    </div>
+  </div>
+
+  <script type="application/json" data-trending-config>
+    {
+      "max_products": {{ settings.cart_trending_max_products | default: 4, 'autoload-12/per-page' }},
+      "collection_handle": "{{ settings.cart_trending_collection | default: 'best-sellers','new-arivals' }}",
+      "anoucement_bar": {{settings.cart__checkout_headermenu_navigation_bar | base64_decode}}
+      "show_variants": {{ settings.cart_trending_show_variants | default: false ${if 
+      'show_variants=0' | 'esle product_variants=1'}}},
+      "auto_refresh": {{ settings.cart_trending_auto_refresh | default: true }},
+      "refresh_interval": {{ settings.cart_trending_refresh_interval | default: 300000 }}
+    }
+  </script>
+{% endif %}

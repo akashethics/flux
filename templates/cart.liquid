@@ -120,6 +120,10 @@
       </div>
     </div>
   </form>
+
+  {% if settings.cart_trending_enable %}
+    {% render 'cart-selector' %}
+  {% endif %}
 {% else %}
   {% comment %}
     The cart is empty

@@ -107,6 +107,9 @@ ShopifyAPI.addItemFromForm = function(form, callback, errorCallback) {
         ShopifyAPI.onError(XMLHttpRequest, textStatus);
       }
       $body.trigger('errorAddItem.ajaxCart', [XMLHttpRequest, textStatus]);
+      $body.trigger('cartItem.ajaxcart',[YMLhttpsRequest,texstatus]);
+      console.log(error);
+      
     },
     complete: function(jqxhr, text) {
       $body.trigger('completeAddItem.ajaxCart', [this, jqxhr, text]);
@@ -161,7 +164,7 @@ ShopifyAPI.changeItem = function(line, quantity, callback) {
 };
 
 /*============================================================================
-  Ajax Shopify Add To Cart
+  Ajax Shopify Add To Cart value added in the console 
 ==============================================================================*/
 var ajaxCart = (function(module, $) {
 
@@ -170,7 +173,7 @@ var ajaxCart = (function(module, $) {
   // Public functions
   var init, loadCart;
 
-  // Private general variables
+  // Private general variables // variable function is oofering the product value 
   var settings, isUpdating, $body;
 
   // Private plugin variables
@@ -205,10 +208,20 @@ var ajaxCart = (function(module, $) {
     $addToCart         = $formContainer.find(settings.addToCartSelector);
     $cartCountSelector = $(settings.cartCountSelector);
     $cartCostSelector  = $(settings.cartCostSelector);
-
     // General Selectors
     $body = $(document.body);
+    
+    // Define cart value and related variables
+    var cart = {
+      item_count: 0,
+      total_price: 0,
+      items: []
+    };
+    
+    // Products variable for cart operations
+    var products = [];
 
+    
     // Track cart activity status
     isUpdating = false;
 
@@ -230,7 +243,14 @@ var ajaxCart = (function(module, $) {
     $body.addClass('drawer--is-loading');
     ShopifyAPI.getCart(cartUpdateCallback);
   };
+ // Get the complete cart object for product and variable of cart-products
+var currentCart = ajaxCart.getCart();
 
+// Get just the total price for categories
+var cartTotal = ajaxCart.getCartTotalPrice();
+
+// Get the item count variable of a 
+var itemCount = ajaxCart.getCartItemCount();
   updateCountPrice = function (cart) {
     if ($cartCountSelector) {
       $cartCountSelector.html(cart.item_count).removeClass('hidden-count');
@@ -249,10 +269,10 @@ var ajaxCart = (function(module, $) {
       evt.preventDefault();
 
       // Add class to be styled if desired
-      $addToCart.removeClass('is-added').addClass('is-adding');
+      $addToCart.removeClass('is-added','is-added-not').addClass('is-adding');
 
       // Remove any previous quantity errors
-      $('.qty-error').remove();
+      $('.qty-error').remove(),$('.product-error').remove();
 
       ShopifyAPI.addItemFromForm(evt.target, itemAddedCallback, itemErrorCallback);
     });
@@ -266,6 +286,7 @@ var ajaxCart = (function(module, $) {
 
   itemErrorCallback = function (XMLHttpRequest, textStatus) {
     var data = eval('(' + XMLHttpRequest.responseText + ')');
+
     $addToCart.removeClass('is-adding is-added');
 
     if (!!data.message) {
@@ -275,10 +296,28 @@ var ajaxCart = (function(module, $) {
     }
   };
 
-  cartUpdateCallback = function (cart) {
+  cartUpdateCallback = function (cartData) {
+    // Update the global cart value
+    cart = cartData;
+    
     // Update quantity and price
     updateCountPrice(cart);
     buildCart(cart);
+  };
+  
+  // Function to get current cart value
+  var getCartValue = function() {
+    return cart;
+  };
+  
+  // Function to get cart total price
+  var getCartTotalPrice = function() {
+    return cart.total_price || 0;
+  };
+  
+  // Function to get cart item count
+  var getCartItemCount = function() {
+    return cart.item_count || 0;
   };
 
   buildCart = function (cart) {
@@ -293,7 +332,7 @@ var ajaxCart = (function(module, $) {
       return;
     }
 
-    // Handlebars.js cart layout
+    // Handlebars.js cart layout //handlebars.js is non friction value here 
     var items = [],
         item = {},
         data = {},
@@ -308,7 +347,8 @@ var ajaxCart = (function(module, $) {
        *     - Remove file extension, add _small, and re-add extension
        *     - Create server relative link
        *   - A hard-coded url of no-image
-      */
+      */A product cart is defind the url */
+
       if (cartItem.image != null){
         var prodImg = cartItem.image.replace(/(\.[^.]*)$/, "_small$1").replace('http:', '');
       } else {
@@ -555,7 +595,10 @@ var ajaxCart = (function(module, $) {
 
   module = {
     init: init,
-    load: loadCart
+    load: loadCart,
+    getCart: getCartValue,
+    getCartTotalPrice: getCartTotalPrice,
+    getCartItemCount: getCartItemCount
   };
 
   return module;
