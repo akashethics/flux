@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timber Shopify Theme - Portfolio Showcase</title>
+    <link rel="stylesheet" href="assets/timber.scss.liquid">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #7f8c8d;
+            font-size: 18px;
+        }
+        .showcase {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+        .demo-links {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .demo-links h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .btn-secondary {
+            background: #95a5a6;
+        }
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="showcase">
+        <div class="header">
+            <h1>🎨 Timber Shopify Theme</h1>
+            <p>Enhanced with Cart Selector & Collection Banner Features</p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🛒 Cart Selector</h3>
+                <p>Advanced cart functionality with quantity selectors, quick add features, and seamless user experience.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎯 Collection Banner</h3>
+                <p>Dynamic collection banners with customizable layouts and responsive design for better visual appeal.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📱 Responsive Design</h3>
+                <p>Mobile-first approach with optimized layouts for all device sizes and screen resolutions.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Performance Optimized</h3>
+                <p>Fast loading times with optimized assets, lazy loading, and efficient code structure.</p>
+            </div>
+        </div>
+
+        <div class="demo-links">
+            <h2>📁 Theme Files & Assets</h2>
+            <p>Explore the theme structure and view individual components:</p>
+            <a href="templates/" class="btn">Templates</a>
+            <a href="assets/" class="btn">Assets</a>
+            <a href="snippets/" class="btn">Snippets</a>
+            <a href="layout/" class="btn">Layouts</a>
+            <a href="locales/" class="btn">Locales</a>
+            <br><br>
+            <a href="https://github.com/akashethics/flux" class="btn btn-secondary">View on GitHub</a>
+        </div>
+    </div>
+
+    <script src="assets/timber.js.liquid"></script>
+</body>
+</html>
